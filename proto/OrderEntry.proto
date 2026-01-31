@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package orderbook;
+
+// Service for placing and managing orders
+service OrderEntry {
+    rpc PlaceOrder (PlaceOrderRequest) returns (PlaceOrderResponse);
+    rpc CancelOrder (CancelOrderRequest) returns (CancelOrderResponse);
+}
+
+enum Side {
+    BUY = 0;
+    SELL = 1;
+}
+
+enum OrderType {
+    LIMIT = 0;
+    MARKET = 1;
+}
+
+message PlaceOrderRequest {
+    string symbol = 1;
+    Side side = 2;
+    OrderType type = 3;
+    double price = 4;
+    uint32 quantity = 5;
+}
+
+message PlaceOrderResponse {
+    uint64 orderId = 1;
+    bool success = 2;
+    string errorMessage = 3;
+}
+
+message CancelOrderRequest {
+    uint64 orderId = 1;
+}
+
+message CancelOrderResponse {
+    bool success = 1;
+    string errorMessage = 2;
+}

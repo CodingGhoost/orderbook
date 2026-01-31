@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package orderbook;
+
+// Updated to use camelCase/PascalCase per user request
+message MarketUpdate {
+    uint64 seq = 1;
+    string symbol = 2;
+    
+    oneof updateType {
+        BookUpdate bookUpdate = 3;
+        TradeUpdate tradeUpdate = 4;
+    }
+}
+
+message BookUpdate {
+    double bestBid = 1;
+    double bestAsk = 2;
+    uint32 bidSize = 3;
+    uint32 askSize = 4;
+}
+
+message TradeUpdate {
+    double price = 1;
+    uint32 quantity = 2;
+    Side takerSide = 3;
+}
+
+enum Side {
+    BUY = 0;
+    SELL = 1;
+}
