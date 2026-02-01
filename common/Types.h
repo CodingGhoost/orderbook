@@ -1,15 +1,13 @@
 #pragma once
 
+#include "OrderEntry.pb.h" // For Side and OrderType enums
 #include <cstdint>
 #include <string>
 
+
 namespace orderbook {
 
-// Side of the order (Buy or Sell)
-enum class Side { BUY, SELL };
-
-// Type of order
-enum class OrderType { LIMIT, MARKET };
+// Note: Side and OrderType enums are now defined in OrderEntry.proto
 
 // Represents a single order in the book
 struct Order {
