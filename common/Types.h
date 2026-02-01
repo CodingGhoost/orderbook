@@ -6,10 +6,10 @@
 namespace orderbook {
 
 // Side of the order (Buy or Sell)
-enum class Side { Buy, Sell };
+enum class Side { BUY, SELL };
 
 // Type of order
-enum class OrderType { Limit, Market };
+enum class OrderType { LIMIT, MARKET };
 
 // Represents a single order in the book
 struct Order {

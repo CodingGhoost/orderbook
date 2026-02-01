@@ -74,9 +74,24 @@ target_link_libraries(orderbook_proto PUBLIC protobuf::libprotobuf gRPC::grpc++)
 add_library(orderbook_common INTERFACE)
 target_include_directories(orderbook_common INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/common")
 
+# ---- Find nlohmann_json ----
+find_package(nlohmann_json CONFIG REQUIRED)
+
 # ---- Server executable ----
-add_executable(server server/server_main.cpp)
-target_link_libraries(server PRIVATE orderbook_proto orderbook_common)
+add_executable(server 
+    server/server_main.cpp
+    server/MatchingEngine.cpp
+    server/Config.cpp
+    server/Simulator.cpp
+    server/OrderEntryService.cpp
+    server/MarketDataService.cpp
+    common/OrderBook.cpp
+)
+target_link_libraries(server PRIVATE 
+    orderbook_proto 
+    orderbook_common
+    nlohmann_json::nlohmann_json
+)
 
 # ---- Client executable ----
 add_executable(client client/client_main.cpp)

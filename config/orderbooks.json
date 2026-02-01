@@ -1,0 +1,44 @@
+{
+  "symbols": [
+    {
+      "symbol": "AAPL",
+      "maxDepthLevels": 10,
+      "initialDepth": {
+        "bids": [
+          {"price": 150.00, "quantity": 100},
+          {"price": 149.50, "quantity": 200},
+          {"price": 149.00, "quantity": 150},
+          {"price": 148.50, "quantity": 300}
+        ],
+        "asks": [
+          {"price": 150.50, "quantity": 150},
+          {"price": 151.00, "quantity": 100},
+          {"price": 151.50, "quantity": 250},
+          {"price": 152.00, "quantity": 200}
+        ]
+      }
+    },
+    {
+      "symbol": "GOOGL",
+      "maxDepthLevels": 10,
+      "initialDepth": {
+        "bids": [
+          {"price": 2800.00, "quantity": 50},
+          {"price": 2795.00, "quantity": 75},
+          {"price": 2790.00, "quantity": 100}
+        ],
+        "asks": [
+          {"price": 2805.00, "quantity": 60},
+          {"price": 2810.00, "quantity": 80},
+          {"price": 2815.00, "quantity": 90}
+        ]
+      }
+    }
+  ],
+  "simulation": {
+    "enabled": true,
+    "intervalMs": 1000,
+    "orderSizeRange": [10, 100],
+    "priceVariance": 0.5
+  }
+}

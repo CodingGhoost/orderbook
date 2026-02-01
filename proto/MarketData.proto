@@ -2,31 +2,37 @@ syntax = "proto3";
 
 package orderbook;
 
-// Updated to use camelCase/PascalCase per user request
+import "OrderEntry.proto";  // Import Side enum from OrderEntry
+
+// Market data streaming service
+service MarketData {
+    rpc Subscribe (SubscribeRequest) returns (stream MarketUpdate);
+}
+
+message SubscribeRequest {
+    string symbol = 1;
+}
+
+// Updated to use snake_case for generated code
 message MarketUpdate {
     uint64 seq = 1;
     string symbol = 2;
     
-    oneof updateType {
-        BookUpdate bookUpdate = 3;
-        TradeUpdate tradeUpdate = 4;
+    oneof update_type {
+        BookUpdate book_update = 3;
+        TradeUpdate trade_update = 4;
     }
 }
 
 message BookUpdate {
-    double bestBid = 1;
-    double bestAsk = 2;
-    uint32 bidSize = 3;
-    uint32 askSize = 4;
+    double best_bid = 1;
+    double best_ask = 2;
+    uint32 bid_size = 3;
+    uint32 ask_size = 4;
 }
 
 message TradeUpdate {
     double price = 1;
     uint32 quantity = 2;
-    Side takerSide = 3;
-}
-
-enum Side {
-    BUY = 0;
-    SELL = 1;
+    Side taker_side = 3;
 }
