@@ -43,8 +43,6 @@ generated/
 *.exe
 *.out
 *.app
-server
-client
 
 # Visual Studio / VS Code
 .vs/
